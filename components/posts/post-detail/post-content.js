@@ -5,8 +5,7 @@ import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
 SyntaxHighlighter.registerLanguage('js', js);
-SyntaxHighlighter.registerLanguage('css', css);
-
+SyntaxHighlighter.registerLanguage('css',css );
 import PostHeader from './post-header';
 import classes from './post-content.module.css';
 
@@ -36,9 +35,11 @@ function PostContent(props) {
           <div className={classes.image}>
             <Image
               src={`/images/posts/${post.slug}/${image.properties.src}`}
-              alt={image.alt}
-              width={600}
-              height={300}
+              alt={image.alt||'test'}
+              width={320}
+              height={200}
+              style={{width: '100%',height:'auto'}}
+              // fill
             />
           </div>
         );
