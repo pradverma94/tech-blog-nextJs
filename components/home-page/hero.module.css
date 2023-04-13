@@ -3,7 +3,7 @@
   background-image: linear-gradient(
     to bottom,
     var(--color-grey-900),
-    var(--color-grey-800)
+    var(--color-primary-600)
   );
   padding: var(--size-8) 0;
 }

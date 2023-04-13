@@ -6,17 +6,19 @@ import classes from './main-navigation.module.css';
 function MainNavigation() {
   return (
     <header className={classes.header}>
-      <Link href="/">
-        <Logo />
+      <Link href='/'>
+        <a>
+          <Logo />
+        </a>
       </Link>
       <nav>
         <ul>
           <li>
-            <Link href="/posts">Posts</Link>
+            <Link href='/posts'>Posts</Link>
           </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
+          {/* <li>
+            <Link href='/resume'>Resume</Link>
+          </li> */}
         </ul>
       </nav>
     </header>
