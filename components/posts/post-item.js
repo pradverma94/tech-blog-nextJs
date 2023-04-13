@@ -18,14 +18,15 @@ function PostItem(props) {
   return (
     <li className={classes.post}>
       <Link href={linkPath}>
-        <a>
+        {/* <a> */}
           <div className={classes.image}>
             <Image
               src={imagePath}
               alt={title}
               width={300}
               height={200}
-              layout='responsive'
+              // layout='responsive'
+              // fill
             />
           </div>
           <div className={classes.content}>
@@ -33,7 +34,7 @@ function PostItem(props) {
             <time>{formattedDate}</time>
             <p>{excerpt}</p>
           </div>
-        </a>
+        {/* </a> */}
       </Link>
     </li>
   );
