@@ -13,7 +13,7 @@ function Hero() {
           height={300}
         />
       </div>
-      <h1>Hi, I'm Pradeep</h1>
+      <h1>Hi, I'm Captain Js</h1>
       <p>
         I blog about development and programming.
       </p>
