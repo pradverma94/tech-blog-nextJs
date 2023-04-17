@@ -4,6 +4,7 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
+SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('js', js);
 SyntaxHighlighter.registerLanguage('css',css );
 import PostHeader from './post-header';
@@ -50,6 +51,7 @@ function PostContent(props) {
 
     code(code) {
       const { className, children } = code;
+      console.log('code classname ',className)
       const language = className.split('-')[1]; // className is something like language-js => We need the "js" part here
       return (
         <SyntaxHighlighter
