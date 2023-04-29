@@ -25,6 +25,44 @@ The idea behind an LRU Cache is to keep frequently accessed items in memory to i
 - You request another item that is not in the cache. Again, the least recently used item is removed from the cache to make room for the new item.
 - This process continues until the cache reaches its maximum capacity, at which point every new item added to the cache will displace the least recently used item.
 
+## Why? We are using map and DLL dataStructure.
+
+![map and DLL dataStructure + usecase](lazybaby.png)
+
+## How both dataStructures liked togather.
+
+![map and DLL dataStructure + usecase](key-node-diagram.png)
+
+## Steps to implement the LRUCache
+
+_We can implement the LRUCache using a combination of a hash table (for fast retrieval of values) and a doubly linked list (for efficient eviction of the least recently used item). The hash table allows us to retrieve the value associated with a key in O(1) time, while the doubly linked list allows us to efficiently remove the least recently used item from the cache._
+
+---
+
+#### BASIC OPERATIONS:
+
+1. Inserting key-value pairs with the insertKeyValuePair method.
+2. Retrieving a key's value with the getValueFromKey method.
+3. Retrieving the most recently used key with the getMostRecentKey method.
+
+---
+
+#### Here are the steps to implement the LRUCache class:
+
+1. Define a Node class to represent a node in the doubly linked list. Each node should have a key, a value, a prev pointer (to the previous node in the list), and a next pointer (to the next node in the list).
+
+2. Define the LRUCache class with a constructor that takes a maxSize argument and initializes the following instance variables:
+
+   - a hash table called cache to store the key-value pairs
+   - a dummy head node called head (with prev and next pointers set to None)
+   - a dummy tail node called tail (with prev and next pointers set to None)
+   - a size variable initialized to 0 (to keep track of the current size of the cache)
+
+3. Implement the insertKeyValuePair method that inserts a key-value pair into the cache. The method should first check if the key is already in the cache. If it is, it should update the value associated with the key and move the corresponding node to the front of the list (to mark it as the most recently used item). If the key is not in the cache, it should create a new node and add it to the front of the list. If the cache is full, the method should remove the least recently used item (the node at the tail of the list) from the cache and remove it from the list. Finally, the method should update the size of the cache.
+
+4. Implement the getValueFromKey method that retrieves the value associated with a key from the cache. The method should first check if the key is in the cache. If it is, it should move the corresponding node to the front of the list (to mark it as the most recently used item) and return the value associated with the key. If the key is not in the cache, the method should return None.
+
+5. Implement the getMostRecentKey method that retrieves the most recently used key from the cache. The method should return the key associated with the node at the front of the list.
 ## LRU cache implementation (in JS)
 
 ```javascript
@@ -122,42 +160,3 @@ class DoublyLinkedListNode {
   }
 }
 ```
-
-## Why? We are using map and DLL dataStructure.
-
-![map and DLL dataStructure + usecase](lazybaby.png)
-
-## How both dataStructures liked togather.
-
-![map and DLL dataStructure + usecase](key-node-diagram.png)
-
-## Steps to implement the LRUCache
-
-_We can implement the LRUCache using a combination of a hash table (for fast retrieval of values) and a doubly linked list (for efficient eviction of the least recently used item). The hash table allows us to retrieve the value associated with a key in O(1) time, while the doubly linked list allows us to efficiently remove the least recently used item from the cache._
-
----
-
-#### BASIC OPERATIONS:
-
-1. Inserting key-value pairs with the insertKeyValuePair method.
-2. Retrieving a key's value with the getValueFromKey method.
-3. Retrieving the most recently used key with the getMostRecentKey method.
-
----
-
-#### Here are the steps to implement the LRUCache class:
-
-1. Define a Node class to represent a node in the doubly linked list. Each node should have a key, a value, a prev pointer (to the previous node in the list), and a next pointer (to the next node in the list).
-
-2. Define the LRUCache class with a constructor that takes a maxSize argument and initializes the following instance variables:
-
-   - a hash table called cache to store the key-value pairs
-   - a dummy head node called head (with prev and next pointers set to None)
-   - a dummy tail node called tail (with prev and next pointers set to None)
-   - a size variable initialized to 0 (to keep track of the current size of the cache)
-
-3. Implement the insertKeyValuePair method that inserts a key-value pair into the cache. The method should first check if the key is already in the cache. If it is, it should update the value associated with the key and move the corresponding node to the front of the list (to mark it as the most recently used item). If the key is not in the cache, it should create a new node and add it to the front of the list. If the cache is full, the method should remove the least recently used item (the node at the tail of the list) from the cache and remove it from the list. Finally, the method should update the size of the cache.
-
-4. Implement the getValueFromKey method that retrieves the value associated with a key from the cache. The method should first check if the key is in the cache. If it is, it should move the corresponding node to the front of the list (to mark it as the most recently used item) and return the value associated with the key. If the key is not in the cache, the method should return None.
-
-5. Implement the getMostRecentKey method that retrieves the most recently used key from the cache. The method should return the key associated with the node at the front of the list.
